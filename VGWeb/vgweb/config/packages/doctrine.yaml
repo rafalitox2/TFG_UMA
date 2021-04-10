@@ -1,5 +1,6 @@
 doctrine:
     dbal:
+        server_version: 'mariadb-10.5.9'
         override_url: true
         url: '%env(resolve:DATABASE_URL)%'
 

@@ -4,9 +4,13 @@ services:
   db:
     container_name: mysql
     image: mariadb:10.5.9-focal
+    tty: true
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: vgapp
+      MYSQL_ROOT_PASSWORD: manu
+    volumes:
+      - /var/lib/mysql:/var/lib/mysql
     ports:
       - "3306:3306"
   
@@ -15,6 +19,18 @@ services:
     image: nginx:1.19.8
     restart: always
     ports:
-      - "80:80"
+      - "8083:80"
       - "443:443"
       - "8080:8080"
+
+  app:
+    container_name: vgweb
+    build: .
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html/public
+    ports:
+      - "8443:80"
+    volumes:
+      - ./VGWeb/vgweb:/var/www/html
+    depends_on:
+      - db
