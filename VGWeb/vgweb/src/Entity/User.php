@@ -54,6 +54,12 @@ class User
      */
     private $adress;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Rol::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $role;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -139,6 +145,18 @@ class User
     public function setAdress(?string $adress): self
     {
         $this->adress = $adress;
+
+        return $this;
+    }
+
+    public function getRole(): ?Rol
+    {
+        return $this->role;
+    }
+
+    public function setRole(?Rol $role): self
+    {
+        $this->role = $role;
 
         return $this;
     }

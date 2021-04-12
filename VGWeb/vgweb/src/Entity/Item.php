@@ -27,6 +27,16 @@ class Item
      */
     private $price;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Order::class)
+     */
+    private $item_order;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=ShoppingCart::class)
+     */
+    private $item_shoppingcart;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +62,30 @@ class Item
     public function setPrice(int $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getItemOrder(): ?Order
+    {
+        return $this->item_order;
+    }
+
+    public function setItemOrder(?Order $item_order): self
+    {
+        $this->item_order = $item_order;
+
+        return $this;
+    }
+
+    public function getItemShoppingcart(): ?ShoppingCart
+    {
+        return $this->item_shoppingcart;
+    }
+
+    public function setItemShoppingcart(?ShoppingCart $item_shoppingcart): self
+    {
+        $this->item_shoppingcart = $item_shoppingcart;
 
         return $this;
     }
