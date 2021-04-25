@@ -7,8 +7,8 @@ services:
     tty: true
     restart: always
     environment:
-      MYSQL_DATABASE: vgapp
-      MYSQL_ROOT_PASSWORD: manu
+      MYSQL_DATABASE: root
+      MYSQL_ROOT_PASSWORD: example
     volumes:
       - /var/lib/mysql:/var/lib/mysql
     ports:
@@ -19,15 +19,16 @@ services:
     image: nginx:1.19.8
     restart: always
     ports:
-      - "8083:80"
-      - "443:443"
-      - "8080:8080"
+      - "8080:80"
+    volumes:
+      - ./VGWeb/vgweb:/var/www/html
+      - ./etc/nginx_production/nginx.conf:/etc/nginx/conf.d/site.conf
+    links: 
+      - app
 
   app:
     container_name: vgweb
     build: .
-    environment:
-      - APACHE_DOCUMENT_ROOT=/var/www/html/public
     ports:
       - "8443:80"
     volumes:

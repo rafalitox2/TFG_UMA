@@ -30,7 +30,6 @@ final class Version20210410164623 extends AbstractMigration
         $this->addSql('ALTER TABLE `order` ADD user_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE `order` ADD CONSTRAINT FK_F5299398A76ED395 FOREIGN KEY (user_id) REFERENCES `user` (id)');
         $this->addSql('CREATE INDEX IDX_F5299398A76ED395 ON `order` (user_id)');
-        $this->addSql('ALTER TABLE product DROP FOREIGN KEY product_FK');
     }
 
     public function down(Schema $schema) : void
@@ -46,6 +45,5 @@ final class Version20210410164623 extends AbstractMigration
         $this->addSql('ALTER TABLE `order` DROP FOREIGN KEY FK_F5299398A76ED395');
         $this->addSql('DROP INDEX IDX_F5299398A76ED395 ON `order`');
         $this->addSql('ALTER TABLE `order` DROP user_id');
-        $this->addSql('ALTER TABLE product ADD CONSTRAINT product_FK FOREIGN KEY (id) REFERENCES item (id)');
     }
 }
