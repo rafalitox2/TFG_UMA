@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Entity;
+namespace App\Backend\Infrastructure\Entity;
 
-use App\Repository\CategoryRepository;
+use App\Repository\ConsoleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CategoryRepository::class)
+ * @ORM\Entity(repositoryClass=ConsoleRepository::class)
  */
-class Category
+class Console
 {
     /**
      * @ORM\Id

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Entity;
+namespace App\Backend\Infrastructure\Entity;
 
 use App\Repository\RolRepository;
 use Doctrine\ORM\Mapping as ORM;

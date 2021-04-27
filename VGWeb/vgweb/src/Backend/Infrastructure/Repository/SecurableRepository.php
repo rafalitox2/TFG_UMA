@@ -1,26 +1,25 @@
 <?php
 
-namespace App\Repository;
-
-use App\Entity\ShoppingCart;
+namespace App\Backend\Infrastructure\Repository;
+use App\Entity\Securable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method ShoppingCart|null find($id, $lockMode = null, $lockVersion = null)
- * @method ShoppingCart|null findOneBy(array $criteria, array $orderBy = null)
- * @method ShoppingCart[]    findAll()
- * @method ShoppingCart[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Securable|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Securable|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Securable[]    findAll()
+ * @method Securable[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ShoppingCartRepository extends ServiceEntityRepository
+class SecurableRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, ShoppingCart::class);
+        parent::__construct($registry, Securable::class);
     }
 
     // /**
-    //  * @return ShoppingCart[] Returns an array of ShoppingCart objects
+    //  * @return Securable[] Returns an array of Securable objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +36,7 @@ class ShoppingCartRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?ShoppingCart
+    public function findOneBySomeField($value): ?Securable
     {
         return $this->createQueryBuilder('s')
             ->andWhere('s.exampleField = :val')

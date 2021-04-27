@@ -1,7 +1,6 @@
 <?php
 
-namespace App\Entity;
-
+namespace App\Backend\Infrastructure\Entity;
 use App\Repository\ItemRepository;
 use Doctrine\ORM\Mapping as ORM;
 

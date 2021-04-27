@@ -1,26 +1,25 @@
 <?php
 
-namespace App\Repository;
-
-use App\Entity\Rol;
+namespace App\Backend\Infrastructure\Repository;
+use App\Entity\RolSecurable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Rol|null find($id, $lockMode = null, $lockVersion = null)
- * @method Rol|null findOneBy(array $criteria, array $orderBy = null)
- * @method Rol[]    findAll()
- * @method Rol[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method RolSecurable|null find($id, $lockMode = null, $lockVersion = null)
+ * @method RolSecurable|null findOneBy(array $criteria, array $orderBy = null)
+ * @method RolSecurable[]    findAll()
+ * @method RolSecurable[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class RolRepository extends ServiceEntityRepository
+class RolSecurableRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Rol::class);
+        parent::__construct($registry, RolSecurable::class);
     }
 
     // /**
-    //  * @return Rol[] Returns an array of Rol objects
+    //  * @return RolSecurable[] Returns an array of RolSecurable objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +36,7 @@ class RolRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Rol
+    public function findOneBySomeField($value): ?RolSecurable
     {
         return $this->createQueryBuilder('r')
             ->andWhere('r.exampleField = :val')

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repository;
+namespace App\Backend\Infrastructure\Repository;
 
 use App\Entity\Order;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;

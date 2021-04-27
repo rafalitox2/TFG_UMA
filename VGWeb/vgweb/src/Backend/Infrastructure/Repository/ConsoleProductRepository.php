@@ -1,26 +1,26 @@
 <?php
 
-namespace App\Repository;
+namespace App\Backend\Infrastructure\Repository;
 
-use App\Entity\Console;
+use App\Entity\ConsoleProduct;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Console|null find($id, $lockMode = null, $lockVersion = null)
- * @method Console|null findOneBy(array $criteria, array $orderBy = null)
- * @method Console[]    findAll()
- * @method Console[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method ConsoleProduct|null find($id, $lockMode = null, $lockVersion = null)
+ * @method ConsoleProduct|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ConsoleProduct[]    findAll()
+ * @method ConsoleProduct[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ConsoleRepository extends ServiceEntityRepository
+class ConsoleProductRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Console::class);
+        parent::__construct($registry, ConsoleProduct::class);
     }
 
     // /**
-    //  * @return Console[] Returns an array of Console objects
+    //  * @return ConsoleProduct[] Returns an array of ConsoleProduct objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class ConsoleRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Console
+    public function findOneBySomeField($value): ?ConsoleProduct
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')
