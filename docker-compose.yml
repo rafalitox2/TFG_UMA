@@ -5,14 +5,13 @@ services:
     container_name: mysql
     image: mariadb:10.5.9-focal
     tty: true
+    network_mode: host
     restart: always
     environment:
       MYSQL_DATABASE: root
       MYSQL_ROOT_PASSWORD: example
     volumes:
       - /var/lib/mysql:/var/lib/mysql
-    ports:
-      - "3306:3306"
   
   balancer:
     container_name: balancer
@@ -29,8 +28,7 @@ services:
   app:
     container_name: vgweb
     build: .
-    ports:
-      - "8443:80"
+    network_mode: host
     volumes:
       - ./VGWeb/vgweb:/var/www/html
     depends_on:

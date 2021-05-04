@@ -14,6 +14,6 @@ stop-all:
 mysql-connect:
 	${MYSQL} -h 0.0.0.0 -u root -p
 
-exec-app:
+exec-app: start-all
 	${DOCKER} exec -it vgweb bash
 
