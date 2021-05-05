@@ -11,6 +11,9 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
             'targetEntity' => [
                 'App\\Backend\\Infrastructure\\Entity\\Order\\ShoppingCart',
             ],
+            'type' => [
+                1 => 'integer',
+            ],
             'nullable' => [
                 1 => true,
             ],

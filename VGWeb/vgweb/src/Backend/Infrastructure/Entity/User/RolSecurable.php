@@ -18,12 +18,15 @@ class RolSecurable
      */
     private $id;
 
+
     /**
+     * @ORM\ManyToOne(targetEntity=Rol::class)
      * @ORM\Column(type="integer")
      */
     private $role_id;
 
     /**
+     * @ORM\ManyToOne(targetEntity=Securable::class)
      * @ORM\Column(type="integer")
      */
     private $securable_id;

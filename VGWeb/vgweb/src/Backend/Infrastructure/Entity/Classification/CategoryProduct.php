@@ -17,11 +17,16 @@ class CategoryProduct
     private $id;
 
     /**
+     * @ORM\ManyToOne(targetEntity=Product::class)
+     * @ORM\Column(nullable=true)
      * @ORM\Column(type="integer")
      */
     private $product_id;
 
+
     /**
+     * @ORM\ManyToOne(targetEntity=Category::class)
+     * @ORM\Column(nullable=true)
      * @ORM\Column(type="integer")
      */
     private $category_id;

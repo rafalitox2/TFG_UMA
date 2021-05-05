@@ -241,7 +241,6 @@
     <service id="App\Backend\Infrastructure\Entity\Order\Item" class="App\Backend\Infrastructure\Entity\Order\Item" autowire="true" autoconfigure="true"/>
     <service id="App\Backend\Infrastructure\Entity\Order\Order" class="App\Backend\Infrastructure\Entity\Order\Order" autowire="true" autoconfigure="true"/>
     <service id="App\Backend\Infrastructure\Entity\Order\Product" class="App\Backend\Infrastructure\Entity\Order\Product" autowire="true" autoconfigure="true"/>
-    <service id="App\Backend\Infrastructure\Entity\Order\ShoppingCart" class="App\Backend\Infrastructure\Entity\Order\ShoppingCart" autowire="true" autoconfigure="true"/>
     <service id="App\Backend\Infrastructure\Entity\User\Rol" class="App\Backend\Infrastructure\Entity\User\Rol" autowire="true" autoconfigure="true"/>
     <service id="App\Backend\Infrastructure\Entity\User\RolSecurable" class="App\Backend\Infrastructure\Entity\User\RolSecurable" autowire="true" autoconfigure="true"/>
     <service id="App\Backend\Infrastructure\Entity\User\Securable" class="App\Backend\Infrastructure\Entity\User\Securable" autowire="true" autoconfigure="true"/>

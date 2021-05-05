@@ -17,12 +17,18 @@ class ConsoleProduct
      */
     private $id;
 
+
     /**
+     * @ORM\ManyToOne(targetEntity=Console::class)
+     * @ORM\Column(nullable=true)
      * @ORM\Column(type="integer")
      */
     private $console_id;
 
+
     /**
+     * @ORM\ManyToOne(targetEntity=Product::class)
+     * @ORM\Column(nullable=true)
      * @ORM\Column(type="integer")
      */
     private $product_id;

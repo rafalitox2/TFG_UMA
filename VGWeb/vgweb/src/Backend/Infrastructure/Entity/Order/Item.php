@@ -28,15 +28,10 @@ class Item
 
     /**
      * @ORM\ManyToOne(targetEntity=Order::class)
-     * @ORM\Column(nullable=true)
+     * @ORM\Column(type="integer",nullable=true)
      */
     private $item_order;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=ShoppingCart::class)
-     * @ORM\Column(nullable=true)
-     */
-    private $item_shoppingcart;
     /**
      * @ORM\ManyToOne(targetEntity=Product::class)
      */
