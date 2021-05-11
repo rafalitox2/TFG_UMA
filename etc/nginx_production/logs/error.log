@@ -1,0 +1,7 @@
+2021/05/11 19:06:08 [warn] 1#1: conflicting server name "localhost" on 0.0.0.0:80, ignored
+2021/05/11 19:13:09 [warn] 1#1: conflicting server name "localhost" on 0.0.0.0:80, ignored
+2021/05/11 19:16:10 [error] 32#32: *1 open() "/usr/share/nginx/html/index.php" failed (2: No such file or directory), client: 192.168.48.1, server: localhost, request: "GET /index.php HTTP/1.1", host: "localhost:8080"
+2021/05/11 19:32:04 [warn] 1#1: conflicting server name "localhost" on 0.0.0.0:80, ignored
+2021/05/11 19:33:45 [warn] 1#1: conflicting server name "localhost" on 0.0.0.0:80, ignored
+2021/05/11 19:37:36 [warn] 1#1: conflicting server name "localhost" on 0.0.0.0:80, ignored
+2021/05/11 19:37:52 [warn] 1#1: conflicting server name "localhost" on 0.0.0.0:80, ignored

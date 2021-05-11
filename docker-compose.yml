@@ -21,14 +21,16 @@ services:
       - "8080:80"
     volumes:
       - ./VGWeb/vgweb:/var/www/html
-      - ./etc/nginx_production/nginx.conf:/etc/nginx/conf.d/site.conf
-    links: 
+      - ./etc/nginx_production/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./etc/nginx_production/logs/:/var/log/nginx/
+    depends_on: 
       - app
 
   app:
     container_name: vgweb
     build: .
-    network_mode: host
+    ports:
+      - "9000:9000"
     volumes:
       - ./VGWeb/vgweb:/var/www/html
     depends_on:
