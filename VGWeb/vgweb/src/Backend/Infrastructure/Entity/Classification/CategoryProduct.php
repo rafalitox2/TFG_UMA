@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Backend\Infrastructure\Entity\Classification;
-use App\Repository\CategoryProductRepository;
+
+use App\Backend\Infrastructure\Entity\Order\Product;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,16 +19,14 @@ class CategoryProduct
 
     /**
      * @ORM\ManyToOne(targetEntity=Product::class)
-     * @ORM\Column(nullable=true)
-     * @ORM\Column(type="integer")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $product_id;
 
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class)
-     * @ORM\Column(nullable=true)
-     * @ORM\Column(type="integer")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $category_id;
 

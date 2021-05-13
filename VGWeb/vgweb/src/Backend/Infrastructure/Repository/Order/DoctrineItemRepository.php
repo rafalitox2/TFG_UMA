@@ -2,49 +2,57 @@
 
 namespace App\Backend\Infrastructure\Repository\Order;
 
-use App\Entity\Item;
+use App\Backend\Application\Repository\Order\ItemRepository;
+use App\Backend\Domain\Model\Order\ItemModel;
+use App\Backend\Domain\Model\Order\ProductModel;
+use App\Backend\Infrastructure\Entity\Order\Item;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-/**
- * @method Item|null find($id, $lockMode = null, $lockVersion = null)
- * @method Item|null findOneBy(array $criteria, array $orderBy = null)
- * @method Item[]    findAll()
- * @method Item[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
-class DoctrineItemRepository extends ServiceEntityRepository
+
+class DoctrineItemRepository extends ServiceEntityRepository implements ItemRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Item::class);
     }
+    private function createModelClass(Item $itemInput): ItemModel{
+        $item = new ItemModel(
+            $itemInput->getId(),
+            $itemInput->getPrice(),
+            $itemInput->getQuantity()
+        );
+        $item ->setProduct(new ProductModel(
+            $itemInput->getProduct()->getId(),
+            $itemInput->getProduct()->getName(),
+            $itemInput->getProduct()->getPrice(),
+            $itemInput->getProduct()->getDetails()
+        ));
 
-    // /**
-    //  * @return Item[] Returns an array of Item objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('i.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        return $item;
     }
-    */
+/*
+    function search(int $id, bool $model = true)
+    {
+        $item = $this->find($id);
+        if($model && $item){
+            return $this->createModelClass($item);
+        }
+        return $item;
+    }
+*/
 
-    /*
-    public function findOneBySomeField($value): ?Item
+    function searchAll(): array
     {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $items = $this->findAll();
+        $itemsApplication = [];
+
+        foreach ($items as $item){
+            $itemsEntity = $this->createModelClass($item);
+            $itemsApplication[] = $itemsEntity;
+        }
+
+        return $itemsApplication;
+
     }
-    */
 }

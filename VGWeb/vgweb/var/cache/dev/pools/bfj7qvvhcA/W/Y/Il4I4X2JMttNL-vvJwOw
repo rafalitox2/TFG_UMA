@@ -9,7 +9,7 @@ return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\
     [
         'stdClass' => [
             'repositoryClass' => [
-                'App\\Repository\\OrderRepository',
+                'OrderRepository',
             ],
             'name' => [
                 1 => '`order`',

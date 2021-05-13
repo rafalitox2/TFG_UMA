@@ -14,45 +14,53 @@ class Item
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $quantity;
+    private int $quantity;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $price;
+    private int $price;
 
     /**
      * @ORM\ManyToOne(targetEntity=Order::class)
-     * @ORM\Column(type="integer",nullable=true)
+     * @ORM\JoinColumn(name="order_id",referencedColumnName="id",nullable=true)
      */
-    private $item_order;
+    private $order;
 
     /**
      * @ORM\ManyToOne(targetEntity=Product::class)
+     * @ORM\JoinColumn(name="product_id",referencedColumnName="id",nullable=true)
      */
-    private $item_product;
+    private $product;
 
 
-    public function getId(): ?int
+    public function __construct($id, $quantity, $price)
+    {
+        $this->id = $id;
+        $this->quantity = $quantity;
+        $this->price = $price;
+    }
+
+
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getQuantity(): ?int
+    public function getQuantity(): int
     {
         return $this->quantity;
     }
 
-    public function setQuantity(int $quantity): self
+    public function setQuantity(int $quantity): void
     {
         $this->quantity = $quantity;
 
-        return $this;
     }
 
     public function getPrice(): ?int
@@ -60,44 +68,30 @@ class Item
         return $this->price;
     }
 
-    public function setPrice(int $price): self
+    public function setPrice(int $price): void
     {
         $this->price = $price;
 
-        return $this;
     }
 
-    public function getItemOrder(): ?Order
+    public function getOrder(): ?Order
     {
-        return $this->item_order;
+        return $this->order;
     }
 
-    public function setItemOrder(?Order $item_order): self
+    public function setOrder(?Order $order): void
     {
-        $this->item_order = $item_order;
+        $this->order = $order;
 
-        return $this;
     }
 
-    public function getItemShoppingcart(): ?ShoppingCart
+    public function getProduct(): Product
     {
-        return $this->item_shoppingcart;
+        return $this->product;
     }
 
-    public function setItemShoppingcart(?ShoppingCart $item_shoppingcart): self
+    public function setProduct(Product $product): void
     {
-        $this->item_shoppingcart = $item_shoppingcart;
-
-        return $this;
-    }
-
-    public function getItemProduct(): ?Product
-    {
-        return $this->item_product;
-    }
-
-    public function setItemProduct(?Product $item_product): self
-    {
-        $this->item_product = $item_product;
+        $this->product = $product;
     }
 }
