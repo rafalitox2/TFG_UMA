@@ -1,0 +1,56 @@
+2021/05/11 19:40:55 [error] 30#30: *1 FastCGI sent in stderr: "Primary script unknown" while reading response header from upstream, client: 192.168.144.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://192.168.144.2:9000", host: "localhost:8080"
+2021/05/11 19:40:57 [error] 30#30: *1 FastCGI sent in stderr: "Primary script unknown" while reading response header from upstream, client: 192.168.144.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://192.168.144.2:9000", host: "localhost:8080"
+2021/05/11 19:42:38 [error] 30#30: *1 FastCGI sent in stderr: "PHP message: [error] Uncaught PHP Exception Symfony\Component\HttpKernel\Exception\NotFoundHttpException: "No route found for "GET /"" at /var/www/html/vendor/symfony/http-kernel/EventListener/RouterListener.php line 136" while reading response header from upstream, client: 192.168.160.1, server: localhost, request: "GET / HTTP/1.1", upstream: "fastcgi://192.168.160.2:9000", host: "localhost:8080"
+2021/05/11 19:43:19 [error] 30#30: *1 FastCGI sent in stderr: "PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\DebugHandlersListener::configure".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\ValidateRequestListener::onKernelRequest".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\SessionListener::onKernelRequest".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\LocaleListener::setDefaultLocale".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\RouterListener::onKernelRequest".
+PHP message: [error] Uncaught PHP Exception Symfony\Component\HttpKernel\Exception\NotFoundHttpException: "No route found for "GET /"" at /var/www/html/vendor/symfony/http-kernel/EventListener/RouterListener.php line 136
+PHP message: [debug] Notified event "kernel.exception" to listener "Symfony\Component\HttpKernel\EventListener\ErrorListener::logKernelException".
+PHP message: [debug] Notified event "kernel.exception" to listener "Symfony\Component\HttpKernel\EventListener\RouterListener::onKernelException".
+PHP message: [debug] Listener "Symfony\Component\HttpKernel\EventListener\RouterListener::onKernelException" stopped propagation of the event "kernel.exception".
+PHP message: [debug] Listener "Symfony\Component\HttpKernel\EventListener\ErrorListener::onKernelException" was not called for event "kernel.exception".
+PHP message: [debug] Notified event "kernel.response" to listener "Symfony\Component\HttpKernel\EventListener\ResponseListener::onKernelResponse".
+PHP message: [debug] Notified event "kernel.response" to listener "Symfony\Component\Security\Http\RememberMe\ResponseListener::onKernelResponse".
+PHP message: [debug] Notified event "kernel.response" to listener "Symfony\Component\HttpKernel\EventListener\ErrorListener::removeCs
+2021/05/11 19:44:14 [error] 30#30: *3 FastCGI sent in stderr: "PHP message: [info] Matched route "app_backend_infrastructure_order_product_list".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\DebugHandlersListener::configure".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\ValidateRequestListener::onKernelRequest".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\SessionListener::onKernelRequest".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\LocaleListener::setDefaultLocale".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\RouterListener::onKernelRequest".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\LocaleListener::onKernelRequest".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\LocaleAwareListener::onKernelRequest".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Bundle\SecurityBundle\Debug\TraceableFirewallListener::configureLogoutUrlGenerator".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Bundle\SecurityBundle\Debug\TraceableFirewallListener::onKernelRequest".
+PHP message: [warning] Failed to save key "%5BApp%5CBackend%5CInfrastructure%5CEntity%5COrder%5CProduct%5D%5B1%5D" of type array: fopen(/var/www/html/var/cache/dev/pools/bfj7qvvhcA/e66b95f7a9a0): failed to open stream: Permission denied
+PHP message: [warning] Failed to save key "%5B%5BC%5DApp%5CBackend%5CInfrastructure%5CEntity%5COrder%5CProduct%5D%5B1%5D" of type int: fopen(/var/www/html/var/cache/dev/pools/bfj7qvvhcA/e66b95f7a9a0): failed to open stream: Permission denied
+PHP message: [warning] Failed to save key "%5BApp%5CBackend%5CInfrastructure%5CEntity%5COrder%5CPr
+2021/05/11 19:44:14 [error] 30#30: *3 FastCGI sent in stderr: "el.exception".
+PHP message: [debug] Notified event "kernel.response" to listener "Symfony\Component\HttpKernel\EventListener\ResponseListener::onKernelResponse".
+PHP message: [debug] Notified event "kernel.response" to listener "Symfony\Component\Security\Http\RememberMe\ResponseListener::onKernelResponse".
+PHP message: [debug] Notified event "kernel.response" to listener "Symfony\Component\HttpKernel\EventListener\ErrorListener::removeCspHeader".
+PHP message: [debug] Notified event "kernel.response" to listener "Symfony\Component\HttpKernel\EventListener\DisallowRobotsIndexingListener::onResponse".
+PHP message: [debug] Notified event "kernel.response" to listener "Symfony\Component\HttpKernel\EventListener\SessionListener::onKernelResponse".
+PHP message: [debug] Notified event "kernel.response" to listener "Symfony\Component\HttpKernel\EventListener\StreamedResponseListener::onKernelResponse".
+PHP message: [debug] Notified event "kernel.finish_request" to listener "Symfony\Component\HttpKernel\EventListener\LocaleListener::onKernelFinishRequest".
+PHP message: [debug] Notified event "kernel.finish_request" to listener "Symfony\Component\HttpKernel\EventListener\SessionListener::onFinishRequest".
+PHP message: [debug] Notified event "kernel.finish_request" to listener "Symfony\Component\HttpKernel\EventListener\RouterListener::onKernelFinishRequest".
+PHP message: [debug] Notified event "kernel.finish_request" to listener "Symfony\Bundle\SecurityBundle\Debug\TraceableFirewallListener::onKernelFinishRequest".
+PHP message: [debug] Notified event "kernel.finish_request" to listener "Symfony\Component\HttpKernel\EventListener\LocaleAwareListener::onKernelFinishRequest"" while reading response header from upstream, client: 192.168.176.1, server: localhost, request: "GET /api/productos HTTP/1.1", upstream: "fastcgi://192.168.176.2:9000", host: "localhost:8080"
+2021/05/11 19:45:27 [error] 30#30: *5 FastCGI sent in stderr: "PHP message: [info] Matched route "app_lucky_number".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\DebugHandlersListener::configure".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\ValidateRequestListener::onKernelRequest".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\SessionListener::onKernelRequest".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\LocaleListener::setDefaultLocale".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\RouterListener::onKernelRequest".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\LocaleListener::onKernelRequest".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Component\HttpKernel\EventListener\LocaleAwareListener::onKernelRequest".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Bundle\SecurityBundle\Debug\TraceableFirewallListener::configureLogoutUrlGenerator".
+PHP message: [debug] Notified event "kernel.request" to listener "Symfony\Bundle\SecurityBundle\Debug\TraceableFirewallListener::onKernelRequest".
+PHP message: [debug] Notified event "kernel.controller_arguments" to listener "Symfony\Component\HttpKernel\EventListener\ErrorListener::onControllerArguments".
+PHP message: [debug] Notified event "kernel.response" to listener "Symfony\Component\HttpKernel\EventListener\ResponseListener::onKernelResponse".
+PHP message: [debug] Notified event "kernel.response" to listener "Symfony\Component\Security\Http\RememberMe\ResponseListener::onKernelResponse".
+PHP message: [debug] Notified event "kernel.response" to listener "Symfony\Component\HttpKernel\EventListener\ErrorListener::removeCspHeader".
+PHP mess

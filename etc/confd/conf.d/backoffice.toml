@@ -1,0 +1,7 @@
+[template]
+src = "myconfig.conf.tmpl"
+dest = "/etc/confd/myconfig.conf"
+keys = [
+    "/myapp/APP_DEBUG",
+    "/myapp/database/user",
+]
