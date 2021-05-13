@@ -2,49 +2,51 @@
 
 namespace App\Backend\Infrastructure\Repository\Order;
 
-use App\Entity\Order;
+use App\Backend\Application\Repository\Order\OrderRepository;
+use App\Backend\Domain\Model\Order\ItemModel;
+use App\Backend\Domain\Model\Order\OrderModel;
+use App\Backend\Infrastructure\Entity\Order\Order;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-/**
- * @method Order|null find($id, $lockMode = null, $lockVersion = null)
- * @method Order|null findOneBy(array $criteria, array $orderBy = null)
- * @method Order[]    findAll()
- * @method Order[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
-class DoctrineOrderRepository extends ServiceEntityRepository
+
+class DoctrineOrderRepository extends ServiceEntityRepository implements OrderRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Order::class);
     }
 
-    // /**
-    //  * @return Order[] Returns an array of Order objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    private function createModelClass(Order $orderInput): OrderModel
     {
-        return $this->createQueryBuilder('o')
-            ->andWhere('o.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('o.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+        $order = new OrderModel(
+            $orderInput->getId(),
+            $orderInput->getOrdered(),
+            $orderInput->getShipped(),
+            $orderInput->getShipTo(),
+            $orderInput->getTotal()
+        );
 
-    /*
-    public function findOneBySomeField($value): ?Order
-    {
-        return $this->createQueryBuilder('o')
-            ->andWhere('o.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        return $order;
     }
-    */
+
+    function search(int $id, bool $model = true)
+    {
+        $order = $this->find($id);
+        if ($model && $order) {
+            return $this->createModelClass($order);
+        }
+        return $order;
+    }
+
+    function searchAll(): array
+    {
+        $orders = $this->findAll();
+        $orderApplication = [];
+        foreach ($orders as $order) {
+            $ordersEntity = $this->createModelClass($order);
+            $orderApplication[] = $ordersEntity;
+        }
+        return $orderApplication;
+    }
 }

@@ -215,16 +215,79 @@
       <tag name="routing.route_loader"/>
     </service>
     <service id="App\Backend\Application\Dto\Response\Classification\CategoryResponseDto" class="App\Backend\Application\Dto\Response\Classification\CategoryResponseDto" autowire="true" autoconfigure="true"/>
+    <service id="App\Backend\Application\Dto\Response\Classification\ConsoleResponseDto" class="App\Backend\Application\Dto\Response\Classification\ConsoleResponseDto" autowire="true" autoconfigure="true"/>
+    <service id="App\Backend\Application\Dto\Response\Order\ItemResponseDto" class="App\Backend\Application\Dto\Response\Order\ItemResponseDto" autowire="true" autoconfigure="true"/>
+    <service id="App\Backend\Application\Dto\Response\Order\OrderResponseDto" class="App\Backend\Application\Dto\Response\Order\OrderResponseDto" autowire="true" autoconfigure="true"/>
     <service id="App\Backend\Application\Dto\Response\Order\ProductResponseDto" class="App\Backend\Application\Dto\Response\Order\ProductResponseDto" autowire="true" autoconfigure="true"/>
+    <service id="App\Backend\Application\Dto\Response\Transform\Classification\CategoryResponseDtoTransformer" class="App\Backend\Application\Dto\Response\Transform\Classification\CategoryResponseDtoTransformer" autowire="true" autoconfigure="true"/>
+    <service id="App\Backend\Application\Dto\Response\Transform\Classification\ConsoleResponseDtoTransformer" class="App\Backend\Application\Dto\Response\Transform\Classification\ConsoleResponseDtoTransformer" autowire="true" autoconfigure="true"/>
+    <service id="App\Backend\Application\Dto\Response\Transform\Order\ItemResponseDtoTransformer" class="App\Backend\Application\Dto\Response\Transform\Order\ItemResponseDtoTransformer" autowire="true" autoconfigure="true"/>
+    <service id="App\Backend\Application\Dto\Response\Transform\Order\OrderResponseDtoTransformer" class="App\Backend\Application\Dto\Response\Transform\Order\OrderResponseDtoTransformer" autowire="true" autoconfigure="true"/>
     <service id="App\Backend\Application\Dto\Response\Transform\Order\ProductResponseDtoTransformer" class="App\Backend\Application\Dto\Response\Transform\Order\ProductResponseDtoTransformer" autowire="true" autoconfigure="true"/>
+    <service id="App\Backend\Application\UseCases\Classification\FindAllCategories" class="App\Backend\Application\UseCases\Classification\FindAllCategories" autowire="true" autoconfigure="true">
+      <argument type="service" id="App\Backend\Infrastructure\Repository\Classification\DoctrineCategoryRepository"/>
+      <argument type="service" id="App\Backend\Application\Dto\Response\Transform\Classification\CategoryResponseDtoTransformer"/>
+    </service>
+    <service id="App\Backend\Application\UseCases\Classification\FindAllConsoles" class="App\Backend\Application\UseCases\Classification\FindAllConsoles" autowire="true" autoconfigure="true">
+      <argument type="service" id="App\Backend\Infrastructure\Repository\Classification\DoctrineConsoleRepository"/>
+      <argument type="service" id="App\Backend\Application\Dto\Response\Transform\Classification\ConsoleResponseDtoTransformer"/>
+    </service>
+    <service id="App\Backend\Application\UseCases\Order\FindAOrder" class="App\Backend\Application\UseCases\Order\FindAOrder" autowire="true" autoconfigure="true">
+      <argument type="service" id="App\Backend\Infrastructure\Repository\Order\DoctrineOrderRepository"/>
+      <argument type="service" id="App\Backend\Application\Dto\Response\Transform\Order\OrderResponseDtoTransformer"/>
+    </service>
+    <service id="App\Backend\Application\UseCases\Order\FindAllItem" class="App\Backend\Application\UseCases\Order\FindAllItem" autowire="true" autoconfigure="true">
+      <argument type="service" id="App\Backend\Infrastructure\Repository\Order\DoctrineItemRepository"/>
+      <argument type="service" id="App\Backend\Application\Dto\Response\Transform\Order\ItemResponseDtoTransformer"/>
+    </service>
+    <service id="App\Backend\Application\UseCases\Order\FindAllOrders" class="App\Backend\Application\UseCases\Order\FindAllOrders" autowire="true" autoconfigure="true">
+      <argument type="service" id="App\Backend\Infrastructure\Repository\Order\DoctrineOrderRepository"/>
+      <argument type="service" id="App\Backend\Application\Dto\Response\Transform\Order\OrderResponseDtoTransformer"/>
+    </service>
     <service id="App\Backend\Application\UseCases\Order\FindAllProducts" class="App\Backend\Application\UseCases\Order\FindAllProducts" autowire="true" autoconfigure="true">
       <argument type="service" id="App\Backend\Infrastructure\Repository\Order\DoctrineProductRepository"/>
       <argument type="service" id="App\Backend\Application\Dto\Response\Transform\Order\ProductResponseDtoTransformer"/>
     </service>
     <service id="App\Backend\Domain\Model\Classification\CategoryModel" class="App\Backend\Domain\Model\Classification\CategoryModel" autowire="true" autoconfigure="true"/>
+    <service id="App\Backend\Domain\Model\Classification\ConsoleModel" class="App\Backend\Domain\Model\Classification\ConsoleModel" autowire="true" autoconfigure="true"/>
+    <service id="App\Backend\Domain\Model\Order\ItemModel" class="App\Backend\Domain\Model\Order\ItemModel" autowire="true" autoconfigure="true"/>
+    <service id="App\Backend\Domain\Model\Order\OrderModel" class="App\Backend\Domain\Model\Order\OrderModel" autowire="true" autoconfigure="true"/>
     <service id="App\Backend\Domain\Model\Order\ProductModel" class="App\Backend\Domain\Model\Order\ProductModel" autowire="true" autoconfigure="true"/>
+    <service id="App\Backend\Infrastructure\Controller\Classification\CategoryController" class="App\Backend\Infrastructure\Controller\Classification\CategoryController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="App\Backend\Application\UseCases\Classification\FindAllCategories"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.g9CqTPp.App\Backend\Infrastructure\Controller\Classification\CategoryController"/>
+      </call>
+    </service>
+    <service id="App\Backend\Infrastructure\Controller\Classification\ConsoleController" class="App\Backend\Infrastructure\Controller\Classification\ConsoleController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="App\Backend\Application\UseCases\Classification\FindAllConsoles"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.g9CqTPp.App\Backend\Infrastructure\Controller\Classification\ConsoleController"/>
+      </call>
+    </service>
     <service id="App\Backend\Infrastructure\Controller\LuckyController" class="App\Backend\Infrastructure\Controller\LuckyController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
+    </service>
+    <service id="App\Backend\Infrastructure\Controller\Order\ItemController" class="App\Backend\Infrastructure\Controller\Order\ItemController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="App\Backend\Application\UseCases\Order\FindAllItem"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.g9CqTPp.App\Backend\Infrastructure\Controller\Order\ItemController"/>
+      </call>
+    </service>
+    <service id="App\Backend\Infrastructure\Controller\Order\OrderController" class="App\Backend\Infrastructure\Controller\Order\OrderController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="App\Backend\Application\UseCases\Order\FindAOrder"/>
+      <argument type="service" id="App\Backend\Application\UseCases\Order\FindAllOrders"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.g9CqTPp.App\Backend\Infrastructure\Controller\Order\OrderController"/>
+      </call>
     </service>
     <service id="App\Backend\Infrastructure\Controller\Order\ProductController" class="App\Backend\Infrastructure\Controller\Order\ProductController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
@@ -233,6 +296,9 @@
       <call method="setContainer">
         <argument type="service" id=".service_locator.g9CqTPp.App\Backend\Infrastructure\Controller\Order\ProductController"/>
       </call>
+    </service>
+    <service id="App\Backend\Infrastructure\Controller\RafaController" class="App\Backend\Infrastructure\Controller\RafaController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
     </service>
     <service id="App\Backend\Infrastructure\Entity\Classification\Category" class="App\Backend\Infrastructure\Entity\Classification\Category" autowire="true" autoconfigure="true"/>
     <service id="App\Backend\Infrastructure\Entity\Classification\CategoryProduct" class="App\Backend\Infrastructure\Entity\Classification\CategoryProduct" autowire="true" autoconfigure="true"/>
@@ -249,7 +315,10 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
-    <service id="App\Backend\Infrastructure\Repository\Classification\DoctrineCategoryRepository" class="App\Backend\Infrastructure\Repository\Classification\DoctrineCategoryRepository" autowire="true" autoconfigure="true"/>
+    <service id="App\Backend\Infrastructure\Repository\Classification\DoctrineCategoryRepository" class="App\Backend\Infrastructure\Repository\Classification\DoctrineCategoryRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Backend\Infrastructure\Repository\Classification\DoctrineConsoleProductRepository" class="App\Backend\Infrastructure\Repository\Classification\DoctrineConsoleProductRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -267,10 +336,6 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Backend\Infrastructure\Repository\Order\DoctrineProductRepository" class="App\Backend\Infrastructure\Repository\Order\DoctrineProductRepository" autowire="true" autoconfigure="true">
-      <tag name="doctrine.repository_service"/>
-      <argument type="service" id="doctrine"/>
-    </service>
-    <service id="App\Backend\Infrastructure\Repository\Order\DoctrineShoppingCartRepository" class="App\Backend\Infrastructure\Repository\Order\DoctrineShoppingCartRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -1709,7 +1774,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.gXKlXFf"/>
+      <argument type="service" id=".service_locator.RBAd36T"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -3282,11 +3347,25 @@
         <argument>server:status</argument>
       </call>
     </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Backend\Infrastructure\Controller\Classification\CategoryController" class="App\Backend\Infrastructure\Controller\Classification\CategoryController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Backend\Infrastructure\Controller\Classification\CategoryController" class="App\Backend\Infrastructure\Controller\Classification\CategoryController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Backend\Infrastructure\Controller\Classification\CategoryController" class="App\Backend\Infrastructure\Controller\Classification\CategoryController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Backend\Infrastructure\Controller\Classification\ConsoleController" class="App\Backend\Infrastructure\Controller\Classification\ConsoleController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Backend\Infrastructure\Controller\Classification\ConsoleController" class="App\Backend\Infrastructure\Controller\Classification\ConsoleController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Backend\Infrastructure\Controller\Classification\ConsoleController" class="App\Backend\Infrastructure\Controller\Classification\ConsoleController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Backend\Infrastructure\Controller\Order\ItemController" class="App\Backend\Infrastructure\Controller\Order\ItemController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Backend\Infrastructure\Controller\Order\ItemController" class="App\Backend\Infrastructure\Controller\Order\ItemController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Backend\Infrastructure\Controller\Order\ItemController" class="App\Backend\Infrastructure\Controller\Order\ItemController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Backend\Infrastructure\Controller\Order\OrderController" class="App\Backend\Infrastructure\Controller\Order\OrderController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Backend\Infrastructure\Controller\Order\OrderController" class="App\Backend\Infrastructure\Controller\Order\OrderController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Backend\Infrastructure\Controller\Order\OrderController" class="App\Backend\Infrastructure\Controller\Order\OrderController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Backend\Infrastructure\Controller\Order\ProductController" class="App\Backend\Infrastructure\Controller\Order\ProductController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Backend\Infrastructure\Controller\Order\ProductController" class="App\Backend\Infrastructure\Controller\Order\ProductController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Backend\Infrastructure\Controller\Order\ProductController" class="App\Backend\Infrastructure\Controller\Order\ProductController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Backend\Infrastructure\Repository\Classification\DoctrineCategoryProductRepository" class="App\Backend\Infrastructure\Repository\Classification\DoctrineCategoryProductRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Backend\Infrastructure\Repository\Classification\DoctrineCategoryProductRepository" class="App\Backend\Infrastructure\Repository\Classification\DoctrineCategoryProductRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Backend\Infrastructure\Repository\Classification\DoctrineCategoryRepository" class="App\Backend\Infrastructure\Repository\Classification\DoctrineCategoryRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Backend\Infrastructure\Repository\Classification\DoctrineCategoryRepository" class="App\Backend\Infrastructure\Repository\Classification\DoctrineCategoryRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Backend\Infrastructure\Repository\Classification\DoctrineConsoleProductRepository" class="App\Backend\Infrastructure\Repository\Classification\DoctrineConsoleProductRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Backend\Infrastructure\Repository\Classification\DoctrineConsoleProductRepository" class="App\Backend\Infrastructure\Repository\Classification\DoctrineConsoleProductRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Backend\Infrastructure\Repository\Classification\DoctrineConsoleRepository" class="App\Backend\Infrastructure\Repository\Classification\DoctrineConsoleRepository" autowire="true" abstract="true"/>
@@ -3297,8 +3376,6 @@
     <service id=".abstract.instanceof.App\Backend\Infrastructure\Repository\Order\DoctrineOrderRepository" class="App\Backend\Infrastructure\Repository\Order\DoctrineOrderRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Backend\Infrastructure\Repository\Order\DoctrineProductRepository" class="App\Backend\Infrastructure\Repository\Order\DoctrineProductRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Backend\Infrastructure\Repository\Order\DoctrineProductRepository" class="App\Backend\Infrastructure\Repository\Order\DoctrineProductRepository" autowire="true" autoconfigure="true" abstract="true"/>
-    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Backend\Infrastructure\Repository\Order\DoctrineShoppingCartRepository" class="App\Backend\Infrastructure\Repository\Order\DoctrineShoppingCartRepository" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Backend\Infrastructure\Repository\Order\DoctrineShoppingCartRepository" class="App\Backend\Infrastructure\Repository\Order\DoctrineShoppingCartRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Backend\Infrastructure\Repository\User\DoctrineRolRepository" class="App\Backend\Infrastructure\Repository\User\DoctrineRolRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Backend\Infrastructure\Repository\User\DoctrineRolRepository" class="App\Backend\Infrastructure\Repository\User\DoctrineRolRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Backend\Infrastructure\Repository\User\DoctrineRolSecurableRepository" class="App\Backend\Infrastructure\Repository\User\DoctrineRolSecurableRepository" autowire="true" abstract="true"/>
@@ -3688,16 +3765,16 @@
         <argument key="doctrine.orm.listeners.pdo_cache_adapter_doctrine_schema_subscriber" type="service" id="doctrine.orm.listeners.pdo_cache_adapter_doctrine_schema_subscriber"/>
       </argument>
     </service>
-    <service id=".service_locator.gXKlXFf" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.RBAd36T" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Backend\Infrastructure\Repository\Classification\DoctrineCategoryProductRepository" type="service" id="App\Backend\Infrastructure\Repository\Classification\DoctrineCategoryProductRepository"/>
+        <argument key="App\Backend\Infrastructure\Repository\Classification\DoctrineCategoryRepository" type="service" id="App\Backend\Infrastructure\Repository\Classification\DoctrineCategoryRepository"/>
         <argument key="App\Backend\Infrastructure\Repository\Classification\DoctrineConsoleProductRepository" type="service" id="App\Backend\Infrastructure\Repository\Classification\DoctrineConsoleProductRepository"/>
         <argument key="App\Backend\Infrastructure\Repository\Classification\DoctrineConsoleRepository" type="service" id="App\Backend\Infrastructure\Repository\Classification\DoctrineConsoleRepository"/>
         <argument key="App\Backend\Infrastructure\Repository\Order\DoctrineItemRepository" type="service" id="App\Backend\Infrastructure\Repository\Order\DoctrineItemRepository"/>
         <argument key="App\Backend\Infrastructure\Repository\Order\DoctrineOrderRepository" type="service" id="App\Backend\Infrastructure\Repository\Order\DoctrineOrderRepository"/>
         <argument key="App\Backend\Infrastructure\Repository\Order\DoctrineProductRepository" type="service" id="App\Backend\Infrastructure\Repository\Order\DoctrineProductRepository"/>
-        <argument key="App\Backend\Infrastructure\Repository\Order\DoctrineShoppingCartRepository" type="service" id="App\Backend\Infrastructure\Repository\Order\DoctrineShoppingCartRepository"/>
         <argument key="App\Backend\Infrastructure\Repository\User\DoctrineRolRepository" type="service" id="App\Backend\Infrastructure\Repository\User\DoctrineRolRepository"/>
         <argument key="App\Backend\Infrastructure\Repository\User\DoctrineRolSecurableRepository" type="service" id="App\Backend\Infrastructure\Repository\User\DoctrineRolSecurableRepository"/>
         <argument key="App\Backend\Infrastructure\Repository\User\DoctrineSecurableRepository" type="service" id="App\Backend\Infrastructure\Repository\User\DoctrineSecurableRepository"/>
@@ -3734,6 +3811,30 @@
         <argument key="session" type="service" id="session" on-invalid="ignore"/>
         <argument key="twig" type="service" id="twig" on-invalid="ignore"/>
       </argument>
+    </service>
+    <service id=".service_locator.g9CqTPp.App\Backend\Infrastructure\Controller\Classification\CategoryController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Backend\Infrastructure\Controller\Classification\CategoryController"/>
+      <argument>App\Backend\Infrastructure\Controller\Classification\CategoryController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.g9CqTPp" method="withContext"/>
+    </service>
+    <service id=".service_locator.g9CqTPp.App\Backend\Infrastructure\Controller\Classification\ConsoleController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Backend\Infrastructure\Controller\Classification\ConsoleController"/>
+      <argument>App\Backend\Infrastructure\Controller\Classification\ConsoleController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.g9CqTPp" method="withContext"/>
+    </service>
+    <service id=".service_locator.g9CqTPp.App\Backend\Infrastructure\Controller\Order\ItemController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Backend\Infrastructure\Controller\Order\ItemController"/>
+      <argument>App\Backend\Infrastructure\Controller\Order\ItemController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.g9CqTPp" method="withContext"/>
+    </service>
+    <service id=".service_locator.g9CqTPp.App\Backend\Infrastructure\Controller\Order\OrderController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Backend\Infrastructure\Controller\Order\OrderController"/>
+      <argument>App\Backend\Infrastructure\Controller\Order\OrderController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.g9CqTPp" method="withContext"/>
     </service>
     <service id=".service_locator.g9CqTPp.App\Backend\Infrastructure\Controller\Order\ProductController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Backend\Infrastructure\Controller\Order\ProductController"/>
@@ -4067,7 +4168,10 @@
     <service id="Symfony\Component\DependencyInjection\ContainerInterface" alias="service_container" public="false">
       <deprecated package="symfony/dependency-injection" version="5.1">The "%alias_id%" autowiring alias is deprecated. Define it explicitly in your app if you want to keep using it.</deprecated>
     </service>
-    <service id="App\Backend\Application\Dto\Response\Transform\ResponseDtoTransformer" alias="App\Backend\Application\Dto\Response\Transform\Order\ProductResponseDtoTransformer" public="false"/>
+    <service id="App\Backend\Application\Repository\Classification\CategoryRepository" alias="App\Backend\Infrastructure\Repository\Classification\DoctrineCategoryRepository" public="false"/>
+    <service id="App\Backend\Application\Repository\Classification\ConsoleRepository" alias="App\Backend\Infrastructure\Repository\Classification\DoctrineConsoleRepository" public="false"/>
+    <service id="App\Backend\Application\Repository\Order\ItemRepository" alias="App\Backend\Infrastructure\Repository\Order\DoctrineItemRepository" public="false"/>
+    <service id="App\Backend\Application\Repository\Order\OrderRepository" alias="App\Backend\Infrastructure\Repository\Order\DoctrineOrderRepository" public="false"/>
     <service id="App\Backend\Application\Repository\Order\ProductRepository" alias="App\Backend\Infrastructure\Repository\Order\DoctrineProductRepository" public="false"/>
     <service id="App\Kernel" alias="kernel" public="true"/>
     <service id="Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface" alias="parameter_bag" public="false"/>
