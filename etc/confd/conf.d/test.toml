@@ -1,0 +1,8 @@
+[template]
+src = "test.tmpl"
+dest = "/etc/vgweb/config.json"
+keys = [
+    "/system/db_hostname",
+    "/system/db_user",
+    "/system/db_password",
+]
