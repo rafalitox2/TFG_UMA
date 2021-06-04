@@ -165,6 +165,6 @@ class __TwigTemplate_4c6b0fed5fb4d5be6608a5be1154236423a24a0a06794664b7ab4a39a25
         {%- endfor -%}
     </pre>
 {% endif %}
-", "@Doctrine/Collector/explain.html.twig", "/home/manu/Escritorio/culo/TFG_UMA/VGWeb/vgweb/vendor/doctrine/doctrine-bundle/Resources/views/Collector/explain.html.twig");
+", "@Doctrine/Collector/explain.html.twig", "/var/www/html/vendor/doctrine/doctrine-bundle/Resources/views/Collector/explain.html.twig");
     }
 }

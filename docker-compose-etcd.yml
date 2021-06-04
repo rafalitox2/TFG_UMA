@@ -7,26 +7,5 @@ services:
     command: "confd -interval 2 -backend etcd -node=http://0.0.0.0:2379"
     network_mode: "host"
     volumes: 
-      - ./etc/confd:/etc/confd/
-
-  etcd:
-    container_name: etcd
-    image: quay.io/coreos/etcd:v3.3.11
-    command: "/usr/local/bin/etcd --force-new-cluster"
-    network_mode: "host"
-    volumes: 
-      - ./etc/etcd:/var/lib/etcd/default.etcd/
-    environment: 
-      ETCD_NAME: "etcd"
-      ETCD_DATA_DIR: "/var/lib/etcd/default.etcd/"
-      ETCD_LISTEN_PEER_URLS: "http://0.0.0.0:2380"
-      ETCD_INITIAL_ADVERTISE_PEER_URLS: "http://0.0.0.0:2380"
-      ETCD_INITIAL_CLUSTER: "etcd=http://0.0.0.0:2380"
-      ETCD_INITIAL_CLUSTER_STATE: "new"
-      ETCD_INITIAL_CLUSTER_TOKEN: "TFG-etcd-cluster"
-      ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379, http://127.0.0.1:4001"
-      ETCD_ADVERTISE_CLIENT_URLS: "http://0.0.0.0:2379"
-      ETCD_CLIENT_CERT_AUTH: "0"
-      ETCD_HEARTBEAT_INTERVAL: "300"
-      ETCD_ELECTION_TIMEOUT: "1500" 
-      ETCD_DEBUG: "false"
+      - ./etc/confd:/etc/confd
+      - ./etc/vgweb:/etc/vgweb

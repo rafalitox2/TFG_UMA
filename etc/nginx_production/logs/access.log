@@ -1,2 +1,6 @@
 192.168.48.1 - - [11/May/2021:19:16:10 +0000] "GET /index.php HTTP/1.1" 404 555 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36" "-"
 192.168.96.1 - - [11/May/2021:19:39:53 +0000] "GET / HTTP/1.1" 304 0 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.128 Safari/537.36" "-"
+192.168.112.1 - - [16/May/2021:14:02:51 +0000] "GET /api/status/ HTTP/1.1" 404 153 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0" "-"
+192.168.112.1 - - [16/May/2021:14:02:51 +0000] "GET /api/status/ HTTP/1.1" 404 153 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0" "-"
+192.168.112.1 - - [16/May/2021:14:02:52 +0000] "GET /api/status/ HTTP/1.1" 404 153 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0" "-"
+192.168.112.1 - - [16/May/2021:14:02:53 +0000] "GET /api/status/ HTTP/1.1" 404 153 "-" "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0" "-"

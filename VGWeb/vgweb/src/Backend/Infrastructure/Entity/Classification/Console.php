@@ -22,6 +22,18 @@ class Console
      */
     private $name;
 
+    /**
+     * Console constructor.
+     * @param $id
+     * @param $name
+     */
+    public function __construct($id, $name)
+    {
+        $this->id = $id;
+        $this->name = $name;
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;

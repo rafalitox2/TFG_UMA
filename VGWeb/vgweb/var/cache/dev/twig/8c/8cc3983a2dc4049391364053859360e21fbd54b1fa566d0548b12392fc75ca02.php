@@ -389,6 +389,6 @@ class __TwigTemplate_672663f6cda85e52af43196f959f1ef71886fc33c9c0f613beff106aa7d
         </div>
     {% endfor %}
 {% endblock %}
-", "@Debug/Profiler/dump.html.twig", "/home/manu/Escritorio/culo/TFG_UMA/VGWeb/vgweb/vendor/symfony/debug-bundle/Resources/views/Profiler/dump.html.twig");
+", "@Debug/Profiler/dump.html.twig", "/var/www/html/vendor/symfony/debug-bundle/Resources/views/Profiler/dump.html.twig");
     }
 }

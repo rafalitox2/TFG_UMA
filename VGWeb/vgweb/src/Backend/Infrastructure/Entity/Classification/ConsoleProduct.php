@@ -2,7 +2,8 @@
 
 namespace App\Backend\Infrastructure\Entity\Classification;
 
-use App\Repository\ConsoleProductRepository;
+use App\Backend\Infrastructure\Entity\Order\Product;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -20,16 +21,14 @@ class ConsoleProduct
 
     /**
      * @ORM\ManyToOne(targetEntity=Console::class)
-     * @ORM\Column(nullable=true)
-     * @ORM\Column(type="integer")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $console_id;
 
 
     /**
      * @ORM\ManyToOne(targetEntity=Product::class)
-     * @ORM\Column(nullable=true)
-     * @ORM\Column(type="integer")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $product_id;
 

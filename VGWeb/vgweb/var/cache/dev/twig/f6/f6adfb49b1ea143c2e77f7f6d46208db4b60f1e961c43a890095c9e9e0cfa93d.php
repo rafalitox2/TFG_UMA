@@ -161,6 +161,6 @@ class __TwigTemplate_c16497ecdbc4bbddf51f66d1b9496b9ce345ed493846a79c4e1ae855e9d
         {% block body %}{% endblock %}
     </body>
 </html>
-", "base.html.twig", "/home/manu/Escritorio/culo/TFG_UMA/VGWeb/vgweb/templates/base.html.twig");
+", "base.html.twig", "/var/www/html/templates/base.html.twig");
     }
 }

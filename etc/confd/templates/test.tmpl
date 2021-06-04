@@ -1,1 +1,5 @@
-APP_DEBUG={{getv "/myapp/APP_DEBUG"}}
+{
+    "DB_HOSTNAME": "{{getv "/system/db_hostname"}}",
+    "DB_USER": "{{getv "/system/db_user"}}",
+    "DB_PASSWORD": "{{getv "/system/db_password"}}"
+}

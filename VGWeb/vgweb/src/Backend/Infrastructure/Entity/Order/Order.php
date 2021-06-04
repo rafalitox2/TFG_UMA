@@ -2,8 +2,10 @@
 
 namespace App\Backend\Infrastructure\Entity\Order;
 
-use App\Repository\OrderRepository;
+use App\Backend\Infrastructure\Entity\Order\Item;
 use App\Backend\Infrastructure\Entity\User\User;
+use DateTimeInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,65 +19,75 @@ class Order
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    private int $id;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
-    private $ordered;
+    private DateTimeInterface $ordered;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true)
      */
-    private $shipped;
+    private DateTimeInterface $shipped;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $ship_to;
+    private string $ship_to;
 
     /**
      * @ORM\Column(type="integer")
      */
-    private $total;
+    private int $total;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class)
      */
     private  $user;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Item::class,mappedBy="order")
+     */
+    private  $items;
+
+
+
+    public function __construct($id, $ordered, $shipped, $ship_to, $total)
+    {
+        $this->id = $id;
+        $this->ordered = $ordered;
+        $this->shipped = $shipped;
+        $this->ship_to = $ship_to;
+        $this->total = $total;
+        $this->items = new ArrayCollection();
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getOrdered(): ?\DateTimeInterface
+    public function getOrdered(): ?DateTimeInterface
     {
         return $this->ordered;
     }
 
-    public function setOrdered(\DateTimeInterface $ordered): self
-    {
-        $this->ordered = $ordered;
-
-        return $this;
-    }
-
-    public function getShipped(): ?\DateTimeInterface
+    public function getShipped(): ?DateTimeInterface
     {
         return $this->shipped;
-    }
-
-    public function setShipped(?\DateTimeInterface $shipped): self
-    {
-        $this->shipped = $shipped;
-
-        return $this;
     }
 
     public function getShipTo(): ?string
     {
         return $this->ship_to;
+    }
+
+    private function setDateTimeRange(DateTimeInterface $ordered, DateTimeInterface $shipped )
+    {
+        $this->ordered = $ordered;
+        $this->shipped = $shipped;
     }
 
     public function setShipTo(string $ship_to): self
@@ -108,4 +120,10 @@ class Order
 
         return $this;
     }
+
+    public function getItem()
+    {
+        return $this->items;
+    }
+
 }

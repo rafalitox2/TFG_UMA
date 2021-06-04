@@ -4,5 +4,12 @@
 
 return [
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], []],
+    'app_backend_infrastructure_classification_category_list' => [[], ['_controller' => 'App\\Backend\\Infrastructure\\Controller\\Classification\\CategoryController::list'], [], [['text', '/api/categories']], [], []],
+    'app_backend_infrastructure_classification_console_list' => [[], ['_controller' => 'App\\Backend\\Infrastructure\\Controller\\Classification\\ConsoleController::list'], [], [['text', '/api/consoles']], [], []],
     'app_lucky_number' => [['max'], ['_controller' => 'App\\Backend\\Infrastructure\\Controller\\LuckyController::number'], [], [['variable', '/', '[^/]++', 'max', true], ['text', '/api/lucky/number']], [], []],
+    'app_backend_infrastructure_order_item_list' => [[], ['_controller' => 'App\\Backend\\Infrastructure\\Controller\\Order\\ItemController::list'], [], [['text', '/api/items']], [], []],
+    'app_backend_infrastructure_order_order_show' => [['id'], ['_controller' => 'App\\Backend\\Infrastructure\\Controller\\Order\\OrderController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/api/orders']], [], []],
+    'app_backend_infrastructure_order_order_list' => [[], ['_controller' => 'App\\Backend\\Infrastructure\\Controller\\Order\\OrderController::list'], [], [['text', '/api/orders']], [], []],
+    'app_backend_infrastructure_order_product_list' => [[], ['_controller' => 'App\\Backend\\Infrastructure\\Controller\\Order\\ProductController::list'], [], [['text', '/api/productos']], [], []],
+    'app_backend_infrastructure_rafa_number' => [[], ['_controller' => 'App\\Backend\\Infrastructure\\Controller\\RafaController::number'], [], [['text', '/api/status/']], [], []],
 ];

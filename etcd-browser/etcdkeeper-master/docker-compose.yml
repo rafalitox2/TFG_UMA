@@ -1,9 +1,0 @@
-version: '2.0'
-
-services:
- etcdkeeper:
-   build: .
-   container_name: "etcdkeeper"
-   network_mode: host
-   environment:
-     HOST: "0.0.0.0"

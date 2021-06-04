@@ -13,6 +13,7 @@ class CategoryModel
     private $products;
 
     public function __construct(
+        int $id,
         string $name
     ){
         $this->products = new ArrayCollection();

@@ -70,6 +70,14 @@ services:
     networks:
       - elastic
 
+  logs01:
+    build: ./etc/elk/logstash
+    container_name: logs01
+    volumes: 
+      - ./etc/nginx_production/logs/:/var/logs
+    networks:
+      - elastic
+
 networks:
   elastic:
     driver: bridge

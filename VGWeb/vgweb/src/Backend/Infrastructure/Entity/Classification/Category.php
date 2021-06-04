@@ -2,7 +2,7 @@
 
 namespace App\Backend\Infrastructure\Entity\Classification;
 
-use App\Repository\DoctrineCategoryRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,6 +21,18 @@ class Category
      * @ORM\Column(type="string", length=255)
      */
     private $name;
+
+    /**
+     * Category constructor.
+     * @param $id
+     * @param $name
+     */
+
+    public function __construct($id, $name)
+    {
+        $this->id = $id;
+        $this->name = $name;
+    }
 
     public function getId(): ?int
     {

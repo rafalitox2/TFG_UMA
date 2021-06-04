@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Infrastructure\Repository\Classification;
+namespace App\Backend\Infrastructure\Repository\Classification;
 
 use App\Backend\Application\Repository\Classification\CategoryRepository;
 use App\Backend\Domain\Model\Order\ProductModel;
-use App\Backend\Infrastructure\Entity\Classification\Category;
 use App\Backend\Infrastructure\Entity\Order\Product;
+use App\Backend\Domain\Model\Classification\CategoryModel;
+use App\Backend\Infrastructure\Entity\Classification\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
