@@ -1,0 +1,22 @@
+<?php //%255BApp%255CBackend%255CInfrastructure%255CController%255CLuckyController%2523number%255D%255B1%255D
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Routing\\Annotation\\Route'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Routing\\Annotation\\Route')),
+    ],
+    null,
+    [
+        'Symfony\\Component\\Routing\\Annotation\\Route' => [
+            'path' => [
+                '/api/lucky/number/{max}',
+            ],
+            'name' => [
+                'app_lucky_number',
+            ],
+        ],
+    ],
+    [
+        $o[0],
+    ],
+    []
+); }];

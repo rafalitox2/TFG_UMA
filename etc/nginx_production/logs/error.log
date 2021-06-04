@@ -1371,3 +1371,33 @@
 2021/06/04 20:59:02 [notice] 40#40: signal process started
 2021/06/04 21:01:50 [notice] 39#39: signal process started
 2021/06/04 21:40:59 [notice] 38#38: signal process started
+2021/06/04 22:00:26 [emerg] 1#1: "daemon" directive is duplicate in /etc/nginx/nginx.conf:33
+2021/06/04 22:00:27 [emerg] 1#1: "daemon" directive is duplicate in /etc/nginx/nginx.conf:33
+2021/06/04 22:00:28 [emerg] 1#1: "daemon" directive is duplicate in /etc/nginx/nginx.conf:33
+2021/06/04 22:00:29 [emerg] 1#1: "daemon" directive is duplicate in /etc/nginx/nginx.conf:33
+2021/06/04 22:00:30 [emerg] 1#1: "daemon" directive is duplicate in /etc/nginx/nginx.conf:33
+2021/06/04 22:00:33 [emerg] 1#1: "daemon" directive is duplicate in /etc/nginx/nginx.conf:33
+2021/06/04 22:00:36 [emerg] 1#1: "daemon" directive is duplicate in /etc/nginx/nginx.conf:33
+2021/06/04 22:00:49 [emerg] 1#1: "daemon" directive is duplicate in /etc/nginx/nginx.conf:33
+2021/06/04 22:00:50 [emerg] 1#1: "daemon" directive is duplicate in /etc/nginx/nginx.conf:33
+2021/06/04 22:00:51 [emerg] 1#1: "daemon" directive is duplicate in /etc/nginx/nginx.conf:33
+2021/06/04 22:00:52 [emerg] 1#1: "daemon" directive is duplicate in /etc/nginx/nginx.conf:33
+2021/06/04 22:00:53 [emerg] 1#1: "daemon" directive is duplicate in /etc/nginx/nginx.conf:33
+2021/06/04 22:04:28 [emerg] 1#1: "split_clients" directive is not allowed here in /etc/nginx/nginx.conf:1
+2021/06/04 22:04:29 [emerg] 1#1: "split_clients" directive is not allowed here in /etc/nginx/nginx.conf:1
+2021/06/04 22:04:29 [emerg] 1#1: "split_clients" directive is not allowed here in /etc/nginx/nginx.conf:1
+2021/06/04 22:04:30 [emerg] 1#1: "split_clients" directive is not allowed here in /etc/nginx/nginx.conf:1
+2021/06/04 22:04:32 [emerg] 1#1: "split_clients" directive is not allowed here in /etc/nginx/nginx.conf:1
+2021/06/04 22:07:41 [emerg] 1#1: "server" directive is not allowed here in /etc/nginx/nginx.conf:2
+2021/06/04 22:07:42 [emerg] 1#1: "server" directive is not allowed here in /etc/nginx/nginx.conf:2
+2021/06/04 22:07:43 [emerg] 1#1: "server" directive is not allowed here in /etc/nginx/nginx.conf:2
+2021/06/04 22:07:44 [emerg] 1#1: "server" directive is not allowed here in /etc/nginx/nginx.conf:2
+2021/06/04 22:07:45 [emerg] 1#1: "server" directive is not allowed here in /etc/nginx/nginx.conf:2
+2021/06/04 22:11:13 [notice] 53#53: signal process started
+2021/06/04 22:13:23 [notice] 94#94: signal process started
+2021/06/04 22:16:11 [notice] 39#39: signal process started
+2021/06/04 22:17:26 [notice] 39#39: signal process started
+2021/06/04 22:19:01 [notice] 40#40: signal process started
+2021/06/04 22:19:52 [notice] 41#41: signal process started
+2021/06/04 22:21:01 [notice] 40#40: signal process started
+2021/06/04 22:22:01 [notice] 40#40: signal process started
