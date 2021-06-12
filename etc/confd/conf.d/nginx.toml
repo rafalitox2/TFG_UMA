@@ -1,0 +1,7 @@
+[template]
+src = "nginx.tmpl"
+dest = "/etc/nginx/conf.d/site.conf"
+keys = [
+    "/service/vgweb",
+]
+reload_cmd = "nginx -s reload"

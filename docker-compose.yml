@@ -5,33 +5,76 @@ services:
     container_name: mysql
     image: mariadb:10.5.9-focal
     tty: true
+    network_mode: host
     restart: always
     environment:
-      MYSQL_DATABASE: root
+      MYSQL_DATABASE: vgapp
       MYSQL_ROOT_PASSWORD: example
     volumes:
-      - /var/lib/mysql:/var/lib/mysql
-    ports:
-      - "3306:3306"
+      - /var/lib/mysql2:/var/lib/mysql
   
   balancer:
     container_name: balancer
-    image: nginx:1.19.8
+    build: ./etc/nginx_production
     restart: always
     ports:
       - "8080:80"
     volumes:
       - ./VGWeb/vgweb:/var/www/html
-      - ./etc/nginx_production/nginx.conf:/etc/nginx/conf.d/site.conf
+      - ./etc/nginx_production/logs/:/var/log/nginx/
+      - ./etc/confd:/etc/confd
+      - ./etc/vgweb:/etc/vgweb
+    depends_on: 
+      - vgweb_production
+      - vgweb_canary
+      - etcd-tfg
     links: 
-      - app
+      - etcd-tfg
+      - vgweb_canary
+      - vgweb_production
 
-  app:
-    container_name: vgweb
+  vgweb_production:
+    container_name: vgweb_production
     build: .
     ports:
-      - "8443:80"
+      - "9000:9000"
     volumes:
       - ./VGWeb/vgweb:/var/www/html
+      - ./etc/vgweb:/etc/vgweb
     depends_on:
       - db
+
+  vgweb_canary:
+    container_name: vgweb_canary
+    build: .
+    ports:
+      - "9001:9000"
+    volumes:
+      - ./VGWeb/vgweb:/var/www/html
+      - ./etc/vgweb:/etc/vgweb
+    depends_on:
+      - db
+
+  etcd-tfg:
+    container_name: etcd-tfg
+    image: quay.io/coreos/etcd:v3.3.11
+    command: "/usr/local/bin/etcd --force-new-cluster"
+    ports: 
+      - "2380:2380"
+      - "2379:2379"
+    volumes: 
+      - ./etc/etcd:/var/lib/etcd/default.etcd/
+    environment: 
+      ETCD_NAME: "etcd"
+      ETCD_DATA_DIR: "/var/lib/etcd/default.etcd/"
+      ETCD_LISTEN_PEER_URLS: "http://0.0.0.0:2380"
+      ETCD_INITIAL_ADVERTISE_PEER_URLS: "http://0.0.0.0:2380"
+      ETCD_INITIAL_CLUSTER: "etcd=http://0.0.0.0:2380"
+      ETCD_INITIAL_CLUSTER_STATE: "new"
+      ETCD_INITIAL_CLUSTER_TOKEN: "TFG-etcd-cluster"
+      ETCD_LISTEN_CLIENT_URLS: "http://0.0.0.0:2379, http://127.0.0.1:4001"
+      ETCD_ADVERTISE_CLIENT_URLS: "http://0.0.0.0:2379"
+      ETCD_CLIENT_CERT_AUTH: "0"
+      ETCD_HEARTBEAT_INTERVAL: "300"
+      ETCD_ELECTION_TIMEOUT: "1500" 
+      ETCD_DEBUG: "false"
