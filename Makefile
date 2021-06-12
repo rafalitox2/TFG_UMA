@@ -12,13 +12,13 @@ start-all:
 	sleep 30
 	${DCOMPOSE} up -d
 	${DCOMPOSE} exec -d balancer bash -c "confd -interval 2 -backend etcd -node=http://etcd-tfg:2379"
-	${DCOMPOSE} -f docker-compose-etcd.yml up -d
 	${DCOMPOSE} -f docker-compose-elk.yml up -d
+	${DCOMPOSE} -f ./etcdkeeper-master/docker-compose.yml up -d
 
 stop-all:
 	${DCOMPOSE} down
-	${DCOMPOSE} -f docker-compose-etcd.yml down
 	${DCOMPOSE} -f docker-compose-elk.yml down
+	${DCOMPOSE} -f ./etcdkeeper-master/docker-compose.yml down
 
 mysql-connect:
 	${MYSQL} -h 0.0.0.0 -u root -p
@@ -26,8 +26,8 @@ mysql-connect:
 exec-app: start-all
 	${DOCKER} exec -it vgweb bash
 
-start-etcd:
-	${DCOMPOSE} -f docker-compose-etcd.yml up -d
-
-start-elk:
+up-elk:
 	${DCOMPOSE} -f docker-compose-elk.yml up -d
+
+up-etcdkeeper:
+	${DCOMPOSE} -f ./etcdkeeper-master/docker-compose.yml up -d
